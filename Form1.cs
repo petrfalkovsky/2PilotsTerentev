@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Reflection.Emit;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
 
 namespace PiliotsSafe
 {
@@ -14,8 +14,8 @@ namespace PiliotsSafe
         public Form1()
         {
             InitializeComponent();
-
-            label1.Font = new Font("Times New Roman", 10, FontStyle.Bold); // вынесенный стиль, можно убрать            
+            // вынесенные стиль, можно убрать, если что в настройках формы пропишу
+            label1.Font = new Font("Times New Roman", 10, FontStyle.Bold);             
             label1.ForeColor = System.Drawing.Color.Transparent;
             // выбор уровней, можно придумать усложнение, только спрайты уменьшить не забыть, чтобы входили на экран
             comboBox1.Items.Add("3");
