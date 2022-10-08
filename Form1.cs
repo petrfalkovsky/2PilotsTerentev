@@ -4,19 +4,19 @@ using System.Reflection.Emit;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
-namespace Digdez1
+namespace PiliotsSafe
 {
     public partial class Form1 : Form
     {
         int n;
-        string s = "Внимание!";
+        string s = "Внимание!";  // строка для заголовка диалога 
 
         public Form1()
         {
             InitializeComponent();
 
-            label1.Font = new Font("Times New Roman", 14, FontStyle.Bold);
-            label1.ForeColor = System.Drawing.Color.Transparent;
+            label1.Font = new Font("Times New Roman", 10, FontStyle.Bold); // вынесенный стиль, можно убрать            label1.ForeColor = System.Drawing.Color.Transparent;
+            // выбор уровней, можно придумать усложнение, только спрайты уменьшить не забыть, чтобы входили на экран
             comboBox1.Items.Add("3");
             comboBox1.Items.Add("4");
             comboBox1.Items.Add("5");
@@ -24,7 +24,7 @@ namespace Digdez1
         }
 
         private PictureBox[,] pb = null;
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e) // кнопка запуска
         {
             if (pb != null)
                 foreach (var pictureBox in pb)
@@ -34,11 +34,12 @@ namespace Digdez1
             {
                 n = Convert.ToInt32(comboBox1.Text);
             }
-
+            // проверка на уровень сложности
             if (n > 6 || n <= 2)
             {
                 MessageBox.Show("Выберите 3, 4, 5 или 6 уровнь сложности.", s, MessageBoxButtons.OK);
             }
+            // иначе загружаем бокс
             else
             {
                 pb = new PictureBox[n, n];
@@ -68,7 +69,7 @@ namespace Digdez1
                 pbClick(rnd.Next(n), rnd.Next(n), true);
         }
 
-        private bool pbClick(int row, int column, bool init = false)
+        private bool pbClick(int row, int column, bool init = false) // цикл с проверкой на совпадение
         {
             bool win = !init;
             for (int i = 0; i < n; i++)
@@ -90,14 +91,14 @@ namespace Digdez1
             return win;
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e) // форма с выпадающим списком
         {
             this.BackColor = Color.Silver;
             this.Left = 350;
             this.Top = 40;
         }
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e) // todo: форма перед закрытием (доделать)
         {
             DialogResult dr = MessageBox.Show("Точно закрываем?\nМы пока не научились сохранять ваши достижения =(", s, MessageBoxButtons.YesNoCancel);
             if (dr == DialogResult.Yes)
