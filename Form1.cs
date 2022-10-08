@@ -91,7 +91,7 @@ namespace PiliotsSafe
             return win;
         }
 
-        private void Form1_Load(object sender, EventArgs e) // форма с выпадающим списком
+        private void Form1_Load(object sender, EventArgs e) 
         {
             this.BackColor = Color.Silver;
             this.Left = 350;
